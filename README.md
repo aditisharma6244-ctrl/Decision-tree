@@ -23,5 +23,17 @@ Is it raining ?
       -  No - Is it windy?
          - Yes - Go with friends
          - No - Go for walk
+         
+# Example with diagram:
+        Raining?
+       /        \
+     Yes        No
+  Stay home    Sunny?
+               /     \
+             Yes     No
+           Picnic   Windy?
+                    /    \
+                  Yes    No
+               Friends   Walk
 # RUNNING CODE ROM:
 python decision_tree.py
