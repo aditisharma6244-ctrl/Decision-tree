@@ -6,7 +6,6 @@ class DecisionTree:
         self.tree = self.build_tree(X, y)
 
     def build_tree(self, X, y):
-        # If all outputs are same → return that value
         if len(set(y)) == 1:
             return y[0]
         feature_index = 0  
@@ -19,7 +18,7 @@ class DecisionTree:
 
             for i in range(len(X)):
                 if X[i][feature_index] == value:
-                    X_sub.append(X[i][1:])  # remove used feature
+                    X_sub.append(X[i][1:])  
                     y_sub.append(y[i])
             tree[value] = self.build_tree(X_sub, y_sub)
         return tree
@@ -38,18 +37,22 @@ class DecisionTree:
             return self.predict_row(row[1:], tree[feature_value])
         else:
             return None
-
 X = [
-    ['Sunny', 'Hot'],
-    ['Rainy', 'Mild'],
-    ['Sunny', 'Cool'],
-    ['Rainy', 'Cool']
+    ['Yes', 'No', 'No'],  
+    ['No', 'Yes', 'No'],
+    ['No', 'No', 'Yes'],
+    ['No', 'No', 'No']
 ]
 
-y = ['No', 'Yes', 'Yes', 'No']
+y = [
+    'Stay home',
+    'Go for picnic',
+    'Go with friends',
+    'Go for walk'
+]
 
 model = DecisionTree()
 model.fit(X, y)
 
-test = [['Sunny', 'Cool']]
+test = [['No', 'No', 'Yes']]
 print("Prediction:", model.predict(test))
